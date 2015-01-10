@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\entities\cannonball.cpp" />
+    <ClCompile Include="..\src\entities\cannontower.cpp" />
+    <ClCompile Include="..\src\entities\drawable.cpp" />
+    <ClCompile Include="..\src\entities\hq.cpp" />
+    <ClCompile Include="..\src\entities\manager.cpp" />
+    <ClCompile Include="..\src\entities\npc.cpp" />
+    <ClCompile Include="..\src\entities\spawnpoint.cpp" />
+    <ClCompile Include="..\src\graphics\font.cpp" />
+    <ClCompile Include="..\src\graphics\texture.cpp" />
+    <ClCompile Include="..\src\graphics\window.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\modules\base.cpp" />
+    <ClCompile Include="..\src\modules\game.cpp" />
+    <ClCompile Include="..\src\modules\main_menu.cpp" />
+    <ClCompile Include="..\src\modules\scoreboard.cpp" />
+    <ClCompile Include="..\src\panels\bgpanel.cpp" />
+    <ClCompile Include="..\src\panels\button.cpp" />
+    <ClCompile Include="..\src\panels\frame.cpp" />
+    <ClCompile Include="..\src\panels\label.cpp" />
+    <ClCompile Include="..\src\panels\panel.cpp" />
+    <ClCompile Include="..\src\panels\rollout.cpp" />
+    <ClCompile Include="..\src\panels\textentry.cpp" />
+    <ClCompile Include="..\src\pathfind.cpp" />
+    <ClCompile Include="..\src\profiles.cpp" />
+    <ClCompile Include="..\src\room\room.cpp" />
+    <ClCompile Include="..\src\util\directory.cpp" />
+    <ClCompile Include="..\src\util\leveldata.cpp" />
+    <ClCompile Include="..\src\util\particles.cpp" />
+    <ClCompile Include="..\src\util\pos2d.cpp" />
+    <ClCompile Include="..\src\util\timem.cpp" />
+    <ClCompile Include="..\src\util\transitions.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\entities\entity.h" />
+    <ClInclude Include="..\src\entities\manager.h" />
+    <ClInclude Include="..\src\entities\npcs.h" />
+    <ClInclude Include="..\src\graphics\font.h" />
+    <ClInclude Include="..\src\graphics\texture.h" />
+    <ClInclude Include="..\src\graphics\window.h" />
+    <ClInclude Include="..\src\modules\base.h" />
+    <ClInclude Include="..\src\modules\game.h" />
+    <ClInclude Include="..\src\modules\main_menu.h" />
+    <ClInclude Include="..\src\modules\scoreboard.h" />
+    <ClInclude Include="..\src\panels\panel.h" />
+    <ClInclude Include="..\src\pathfind.h" />
+    <ClInclude Include="..\src\profiles.h" />
+    <ClInclude Include="..\src\room\room.h" />
+    <ClInclude Include="..\src\util\files.h" />
+    <ClInclude Include="..\src\util\leveldata.h" />
+    <ClInclude Include="..\src\util\particles.h" />
+    <ClInclude Include="..\src\util\pos2d.h" />
+    <ClInclude Include="..\src\util\timem.h" />
+    <ClInclude Include="..\src\util\transitions.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{206EBC8F-F256-457A-B427-26463C30C3C3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>IceCreamGame</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>D:\IceCreamGame\build\$(Configuration)\</OutDir>
+    <IntDir>D:\IceCreamGame\build\intermed\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>D:\IceCreamGame\lib;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>D:\IceCreamGame\build\$(Configuration)\</OutDir>
+    <IntDir>D:\IceCreamGame\build\intermed\$(Configuration)\</IntDir>
+    <LibraryPath>D:\IceCreamGame\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\IceCreamGame\includes;D:\IceCreamGame\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAsManaged>false</CompileAsManaged>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;SDL_image.lib;OpenGL32.lib;GLu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\IceCreamGame\includes;D:\IceCreamGame\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;SDL_image.lib;OpenGL32.lib;GLu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

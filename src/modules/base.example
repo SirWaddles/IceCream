@@ -1,0 +1,130 @@
+#include "modules/base.h"
+#include "panels/panel.h"
+#include "room/room.h"
+#include "entities/entity.h"
+#include <vector>
+
+using namespace std;
+
+Texture *errorTex;
+TRoom *mainRoom;
+DFrame *mainFrame;
+
+void GModule::Initialize(){
+	errorTex=new Texture("contents/default.png");
+	mainRoom=new TRoom(10,10);
+	mainRoom->AddDrawable(new ECharacter());
+	FontMan::BuildFont("title", "contents/title1.png", 64);
+	FontMan::BuildFont("text", "contents/text1.png", 24);
+	mainFrame=new DFrame(30, 30, 200, 200);
+	mainFrame->SetText("OMNOM");
+
+	DRollout *rollOut=new DRollout(10, 40, 180, 150); 
+	rollOut->SetText("Rolll");
+	mainFrame->AddChild(rollOut);
+
+	DButton *mBtn=new DButton(20, 50, 150);
+	mBtn->SetText("WAAAT");
+	rollOut->AddChild(mBtn);
+
+	DTextEntry *mText=new DTextEntry(20, 80, 150);
+	rollOut->AddChild(mText);
+}
+
+void GModule::Clean(){
+	delete errorTex;
+	delete mainRoom;
+	FontMan::ClearFont("title");
+	FontMan::ClearFont("text");
+}
+
+char fpsmsg[10];
+
+void GModule::Draw(){
+	GraphicsM::ClearWindow(Colour(0, 0, 0));
+	int centx, centy;
+	centx=GraphicsM::ScrW()*0.5;
+	centy=GraphicsM::ScrH()*0.5;
+	//GraphicsM::DrawRoundedRectangle(16, centx-300, centy-300, 600, 600, Colour(100,200,100));
+	//GraphicsM::DrawTexturedRectangle(centx-100, centy-100, 200, 200, Colour(255, 255, 255), errorTex);
+	int roomW, roomH;
+	roomW=mainRoom->GetTotalSizeX()*0.5;
+	roomH=mainRoom->GetTotalSizeY()*0.5;
+	GraphicsM::ResetOrigin(centx-roomW, centy-roomH);
+	mainRoom->Draw();
+	GraphicsM::ResetOrigin(-(centx-roomW), -(centy-roomH));
+	GraphicsM::DrawTText(50, 50, FontMan::GetFont("text"), fpsmsg, 0, Colour(255, 100, 100, 255));
+	mainFrame->DoDraw();
+}
+
+int LastTick=0;
+void GModule::Think(){
+	int diff=SDL_GetTicks()-LastTick;
+	float fps=1000.0/((float)diff);
+	sprintf(fpsmsg, "%f", fps);
+	LastTick=SDL_GetTicks();
+	mainFrame->TopThink();
+	mainRoom->Think();
+}
+
+void GModule::BGThink(){
+
+}
+
+void GModule::Event(SDL_Event &kevent){
+	mainFrame->DoEvent(kevent);
+	mainRoom->Event(kevent);
+}
+
+GModule::GModule(){
+	HIndex=-1;
+	Initialize();
+}
+
+GModule::~GModule(){
+	Clean();
+}
+
+namespace GMods {
+	int Focus;
+
+	void SetFocus(int HIndex){
+		Focus=HIndex;
+	}
+
+	vector<GModule*> Modules;
+	void HookModule(GModule *gmod){
+		gmod->HIndex=Modules.size();
+		Modules.push_back(gmod);
+	}
+
+	void RemoveHook(GModule *gmod){
+		if(gmod->HIndex==-1){
+			return;
+		}
+		Modules.erase(Modules.begin()+gmod->HIndex);
+		delete gmod;
+	}
+
+	void RunEvent(SDL_Event &kevent){
+		Modules[Focus]->Event(kevent);
+	}
+
+	void DoDraw(){
+
+		Modules[Focus]->Draw();
+		GraphicsM::WaitForFinish();
+		SDL_GL_SwapBuffers();
+	}
+
+	void DoThink(){
+		Modules[Focus]->Think();
+	}
+
+	void DoBGThink(){
+		vector<GModule*>::iterator it;
+		for(it=Modules.begin(); it < Modules.end(); it++){
+			(*it)->BGThink();
+		}
+	}
+}

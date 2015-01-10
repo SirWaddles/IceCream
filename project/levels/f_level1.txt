@@ -1,0 +1,8 @@
+leveldatah
+20
+20
+ent_hq:15:15
+ent_npc_spawn:0:1:5,ent_fireball,5
+ent_npc_spawn:0:2:10,ent_fireball,5
+l|ent_hq:1
+l|ent_cannontower:1

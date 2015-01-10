@@ -1,0 +1,12 @@
+leveldatah
+20
+20
+ent_hq:10:10
+ent_hq:5:5
+ent_npc_spawn:0:0:5,ent_fireball,5,ent_fireboss,1
+ent_npc_spawn:0:3:5,ent_fireball,5,ent_fireboss,1
+ent_npc_spawn:1:0:5,ent_fireball,5,ent_fireboss,1
+ent_npc_spawn:7:7:5,ent_fireball,5,ent_fireboss,1
+ent_npc_spawn:15:1:5,ent_fireball,5,ent_fireboss,1
+l|ent_hq:5
+l|ent_cannontower:10
